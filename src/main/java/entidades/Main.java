@@ -19,7 +19,7 @@ public class Main {
         Telefone t2 = preencherTelefone("81", "32686584");
         Endereco end1 = preencherEndereco("12345678", "Recife", "casa", 54, "rua", "bairroTeste");
 
-//        c1.setEndereco(end1);
+        c1.setEndereco(end1);
         c1.addTelefones(t1);
         c1.addTelefones(t2);
 

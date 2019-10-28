@@ -24,7 +24,7 @@ public class DbUnitUtil {
         IDatabaseConnection db_conn = null;
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ordemservico?useSSL=false", "root", "root");
+                    "jdbc:mysql://localhost:3306/ordemservico?serverTimezone=GMT-3&useSSL=false", "root", "root");
             db_conn = new DatabaseConnection(conn, "ordemservico");
             DatabaseConfig dbConfig = db_conn.getConfig();
             dbConfig.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory());
