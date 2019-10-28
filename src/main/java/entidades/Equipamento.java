@@ -16,11 +16,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_EQUIPAMENTO")
-public class Equipamento implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EQUIP_ID")
-    private long id;
+public class Equipamento extends Entidade {
     
     @NotNull(message = "Descrição do equipamento não pode ser nulo")
     @Size(max = 300, message = "Caracteres a mais na descrição do equipamento")
@@ -62,11 +58,11 @@ public class Equipamento implements Serializable {
     
     @NotNull(message = "Equipamento deve estar associado a um serviço")
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "FK_SERV", referencedColumnName = "SERV_ID")
+    @JoinColumn(name = "FK_SERV", referencedColumnName = "ID")
     private Servico servico;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "FK_FUNC", referencedColumnName = "PESS_ID")
+    @JoinColumn(name = "FK_FUNC", referencedColumnName = "ID")
     private Funcionario funcionario;
     
     public Equipamento(){
@@ -96,14 +92,6 @@ public class Equipamento implements Serializable {
             return false;
         }
         return true;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getDescricao() {

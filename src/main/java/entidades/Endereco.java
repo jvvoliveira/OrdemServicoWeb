@@ -15,12 +15,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_ENDERECO")
-public class Endereco  implements Serializable {
-
-    @Id	
-    @GeneratedValue(strategy = GenerationType.IDENTITY)	
-    @Column(name = "END_ID")	
-    private long id;
+public class Endereco extends Entidade {
     
     @NotNull(message = "Cidade não pode ser nulo")
     @Size(max = 80, message = "Caracteres a mais para cidade")
@@ -76,14 +71,6 @@ public class Endereco  implements Serializable {
             return false;
         }
         return true;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getCidade() {

@@ -17,12 +17,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_TELEFONE")
-public class Telefone implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TEL_ID")
-    private long id;
+public class Telefone extends Entidade {
 
     @NotNull(message = "Número de telefone não pode ser nulo")
     @Size(min = 8, max = 12, message = "Quantidade incorreta de caracteres para número de telefone")
@@ -36,7 +31,7 @@ public class Telefone implements Serializable {
 
     @NotNull(message = "Telefone precisa estar associado a um cliente")
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK_ID_CLI", referencedColumnName = "PESS_ID")
+    @JoinColumn(name = "FK_ID_CLI", referencedColumnName = "ID")
     private Cliente cliente;
 
     @Override
@@ -62,14 +57,6 @@ public class Telefone implements Serializable {
             return false;
         }
         return true;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getDdd() {

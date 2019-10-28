@@ -14,7 +14,7 @@ import validadores.Valida_Matricula;
 
 @Entity
 @DiscriminatorValue(value = "F")
-public class Funcionario extends Pessoa implements Serializable {
+public class Funcionario extends Pessoa {
     
     @Valida_Matricula(message = "Matrícula inválida")
     @Size(min = 9, max = 9, message = "Matrícula com quantidade incorreta de caracteres")

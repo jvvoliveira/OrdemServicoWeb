@@ -23,12 +23,7 @@ import org.hibernate.validator.constraints.Email;
 @Table(name = "TB_PESSOA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "PESS_TIPO", discriminatorType = DiscriminatorType.STRING, length = 1)
-public abstract class Pessoa implements Serializable {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PESS_ID")
-    private long id;
+public abstract class Pessoa extends Entidade {
     
     @NotNull(message = "Nome não pode ser nulo")
     @Size(max = 100, message = "Caracteres a mais para nome")
@@ -73,14 +68,6 @@ public abstract class Pessoa implements Serializable {
         return true;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -104,6 +91,4 @@ public abstract class Pessoa implements Serializable {
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
-    
-    
 }

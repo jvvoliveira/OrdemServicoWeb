@@ -26,11 +26,7 @@ import utils.Status;
 
 @Entity
 @Table(name = "TB_SERVICO")
-public class Servico implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SERV_ID")
-    private long id;
+public class Servico extends Entidade {
     
     @NotNull(message = "Status do serviço não pode ser nulo")
     @Enumerated(EnumType.STRING)
@@ -63,12 +59,12 @@ public class Servico implements Serializable {
    
     @NotNull(message = "Serviço deve estar associado a um cliente")
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK_CLI", referencedColumnName = "PESS_ID")
+    @JoinColumn(name = "FK_CLI", referencedColumnName = "ID")
     private Cliente cliente;
     
     @NotNull(message = "Serviço deve estar associado a um funcionário atendente")
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK_FUNC", referencedColumnName = "PESS_ID")
+    @JoinColumn(name = "FK_FUNC", referencedColumnName = "ID")
     private Funcionario funcionario;
     
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -101,14 +97,6 @@ public class Servico implements Serializable {
             return false;
         }
         return true;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Status getStatus() {
@@ -205,7 +193,7 @@ public class Servico implements Serializable {
     }
     
     public Equipamento getEquipamento(long id) {
-        for(Equipamento equip :equipamentos){
+        for(Equipamento equip : equipamentos){
             if(equip.getId() == id){
                 return equip;
             }
