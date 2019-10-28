@@ -37,6 +37,8 @@ public class Cliente extends Pessoa implements Serializable{
         this.telefones = new ArrayList();
         this.servicos = new ArrayList();
     }
+    
+    
 
     public String getCpf() {
         return cpf;
@@ -63,12 +65,12 @@ public class Cliente extends Pessoa implements Serializable{
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-        if(!(endereco == null)){
-            this.endereco.setCliente(this);
-        }
-    }
+//    public void setEndereco(Endereco endereco) {
+//        this.endereco = endereco;
+//        if(!(endereco == null)){
+//            this.endereco.setCliente(this);
+//        }
+//    }
 
     public List<Servico> getServicos() {
         return servicos;

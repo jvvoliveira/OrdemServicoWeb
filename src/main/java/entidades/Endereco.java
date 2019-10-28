@@ -1,6 +1,8 @@
 package entidades;
 
 import java.io.Serializable;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,22 +10,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_ENDERECO")
-public class Endereco implements Serializable {
+@Access(AccessType.FIELD)
+public class Endereco extends Entidade implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "END_ID")
-    private long id;
     
     @NotNull(message = "Cidade não pode ser nulo")
     @Size(max = 80, message = "Caracteres a mais para cidade")
-    @Column(name = "END_CIDADE")
+    @Column(name = "END_CIDADEE")
     private String cidade;
     
     @NotNull(message = "Logradouro não pode ser nulo")
@@ -49,8 +49,8 @@ public class Endereco implements Serializable {
     private String cep;
     
 //    @NotNull(message = "Endereço precisa estar associado a um cliente")
-    @OneToOne(mappedBy = "endereco", cascade = CascadeType.PERSIST)
-    private Cliente cliente;
+//    @OneToOne(mappedBy = "endereco", cascade = CascadeType.PERSIST)
+//    private Cliente cliente;
 
     @Override
     public int hashCode() {
@@ -77,9 +77,9 @@ public class Endereco implements Serializable {
         return true;
     }
 
-    public long getId() {
-        return id;
-    }
+//    public long getId() {
+//        return id;
+//    }
 
     public void setId(long id) {
         this.id = id;
@@ -133,12 +133,12 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+//    public Cliente getCliente() {
+//        return cliente;
+//    }
+//
+//    public void setCliente(Cliente cliente) {
+//        this.cliente = cliente;
+//    }
     
 }
