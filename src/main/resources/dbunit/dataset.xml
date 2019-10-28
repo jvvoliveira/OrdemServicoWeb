@@ -35,18 +35,18 @@
     <TB_PESSOA pess_id="5" pess_tipo="C" pess_nome="Amanda Costa e Silva" pess_email="a_costaesilva@mail.com" pess_data_nascimento="1986-03-09" 
         cli_cpf="297.121.520-22" fk_end="1"/>
     <!-- telefone(1) -->
-    <TB_TELEFONE tel_numero="34648400" tel_ddd="81" fk_id_cli="5"/>
+    <TB_TELEFONE tel_id="1" tel_numero="34648400" tel_ddd="81" fk_id_cli="5"/>
     <!-- telefone(2) -->
-    <TB_TELEFONE tel_numero="998753008" tel_ddd="81" fk_id_cli="5"/>
+    <TB_TELEFONE tel_id="2" tel_numero="998753008" tel_ddd="81" fk_id_cli="5"/>
     <!-- telefone(3) -->
-    <TB_TELEFONE tel_numero="987652079" tel_ddd="81" fk_id_cli="5"/>
+    <TB_TELEFONE tel_id="3" tel_numero="987652079" tel_ddd="81" fk_id_cli="5"/>
     <!-- ******************* SERVICOS DESTE CLIENTE ****************************** -->
     <!-- Servico(1) -->
     <TB_SERVICO serv_id="1" serv_status="FINALIZADO" serv_data_inicio="2019-08-28" serv_data_fim="2019-09-06" serv_data_prev_fim="2019-09-06" 
         fk_cli="5" fk_func="2"/>
     <!-- ******************** EQUIPAMENTOS DESTE CLIENTE ************************ -->
     <!-- Equipamento(1) -->
-    <TB_EQUIPAMENTO equip_descricao="O celular está com mau com defeito nos botões de volume, veio sem nenhum acessório. Tem arranhões na carcaça." 
+    <TB_EQUIPAMENTO equip_id="1" equip_descricao="O celular está com mau com defeito nos botões de volume, veio sem nenhum acessório. Tem arranhões na carcaça." 
         equip_marca="Motorola" equip_modelo="MotoG G4" equip_serie="YI879AN" 
         equip_defeito="Bateria está descarregando rápido e o celular desliga com frequência" equip_solucao="Troca da bateria do aparelho"
         equip_mao_obra="57.90" equip_custo_pecas="267.98" fk_serv="1" fk_func="4"/>
@@ -57,9 +57,9 @@
     <TB_PESSOA pess_id="6" pess_tipo="C" pess_nome="Arlindo Cavalcanti Filho" pess_email="acf@mail.com" pess_data_nascimento="1984-04-19" 
         cli_cpf="025.696.830-60" fk_end="2"/>
     <!-- telefone(4) -->
-    <TB_TELEFONE tel_numero="35679007" tel_ddd="81" fk_id_cli="6"/>
+    <TB_TELEFONE tel_id="4" tel_numero="35679007" tel_ddd="81" fk_id_cli="6"/>
     <!-- telefone(5) -->
-    <TB_TELEFONE tel_numero="987600987" tel_ddd="81" fk_id_cli="6"/>
+    <TB_TELEFONE tel_id="5" tel_numero="987600987" tel_ddd="81" fk_id_cli="6"/>
     <!-- *********************** SERVICOS DESTE CLIENTE *********************** -->
     <!-- Servico(2) -->
     <TB_SERVICO serv_id="2" serv_status="ENTREGUE" serv_data_inicio="2019-02-20" serv_data_fim="2019-03-02" serv_data_prev_fim="2019-02-04"  
@@ -69,14 +69,14 @@
         fk_cli="6" fk_func="3"/>
     <!-- *********************** EQUIPAMENTOS DESTE CLIENTE *********************** -->
     <!-- Equipamento(2) -->
-    <TB_EQUIPAMENTO equip_descricao="Notebook em boas condições, na garantia de fábrica" equip_marca="dell" 
+    <TB_EQUIPAMENTO equip_id="2" equip_descricao="Notebook em boas condições, na garantia de fábrica" equip_marca="dell" 
         equip_modelo="i15-3567-A15P" equip_serie="AFGB86JH83JDS7" equip_defeito="Está com propagandas que interrompem o uso"
         equip_solucao="Formatação da máquina, restaurar para os padrões de fábrica" equip_mao_obra="95.0" equip_custo_pecas="0.0" fk_serv="2"  fk_func="3"/>
     <!-- Equipamento(3) -->
-    <TB_EQUIPAMENTO equip_descricao="Celular bem gasto com trincos na tela, veio com capa transparente" equip_marca="Samsung" equip_modelo="Galaxy S5" equip_serie="AKG98" 
+    <TB_EQUIPAMENTO equip_id="3" equip_descricao="Celular bem gasto com trincos na tela, veio com capa transparente" equip_marca="Samsung" equip_modelo="Galaxy S5" equip_serie="AKG98" 
         equip_defeito="Esqueceu a senha do celular" equip_solucao="Resetar o android do celular" equip_mao_obra="48.67" equip_custo_pecas="0" fk_serv="3" />
     <!-- Equipamento(4) -->
-    <TB_EQUIPAMENTO equip_descricao="Celular em bom estado, sem acessórios" equip_marca="Sony" equip_modelo="xperia z5" equip_serie="HJ8756OI" 
+    <TB_EQUIPAMENTO equip_id="4" equip_descricao="Celular em bom estado, sem acessórios" equip_marca="Sony" equip_modelo="xperia z5" equip_serie="HJ8756OI" 
         equip_defeito="Entrada e fone de ouvido está com mau contato" equip_solucao="" equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="3" />
     <!-- ############################################################################### -->
     
@@ -85,24 +85,24 @@
     <TB_PESSOA pess_id="7" pess_tipo="C" pess_nome="Boa Vista Paraiso das Frutas ME" pess_email="bvpf@parisofrutas.com" pess_data_nascimento="1975-09-27" 
         cli_cpf="812.307.710-00" fk_end="3"/>
     <!-- telefone(6) -->
-    <TB_TELEFONE tel_numero="34658709" tel_ddd="81" fk_id_cli="7"/>
+    <TB_TELEFONE tel_id="6" tel_numero="34658709" tel_ddd="81" fk_id_cli="7"/>
     <!-- telefone(7) -->
-    <TB_TELEFONE tel_numero="34658708" tel_ddd="81" fk_id_cli="7"/>
+    <TB_TELEFONE tel_id="7" tel_numero="34658708" tel_ddd="81" fk_id_cli="7"/>
     <!-- *********************** SERVICOS DESTE CLIENTE *********************** -->
     <!-- Servico(4) -->
     <TB_SERVICO serv_id="4" serv_status="ANDAMENTO" serv_data_inicio="2019-09-09" serv_data_prev_fim="2019-09-22"
         fk_cli="7" fk_func="2"/>
     <!-- *********************** EQUIPAMENTOS DESTE CLIENTE *********************** -->
     <!-- Equipamento(5) -->
-    <TB_EQUIPAMENTO equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="ASD8766" 
+    <TB_EQUIPAMENTO equip_id="5" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="ASD8766" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="3"/>
     <!-- Equipamento(6) -->
-    <TB_EQUIPAMENTO equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="AKJ987YHj" 
+    <TB_EQUIPAMENTO equip_id="6" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="AKJ987YHj" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="3"/>
     <!-- Equipamento(7) -->
-    <TB_EQUIPAMENTO equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="IJK877KJ" 
+    <TB_EQUIPAMENTO equip_id="7" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="IJK877KJ" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="2"/>
     <!-- ############################################################################### -->
@@ -112,7 +112,7 @@
     <TB_PESSOA pess_id="8" pess_tipo="C" pess_nome="Bruna Amancio Vilanova" pess_email="brunavilanova@mail.com" pess_data_nascimento="1995-08-30" 
         cli_cpf="327.392.580-97" fk_end="4"/>
     <!-- telefone(8) -->
-    <TB_TELEFONE tel_numero="987609908" tel_ddd="81" fk_id_cli="8"/>
+    <TB_TELEFONE tel_id="8" tel_numero="987609908" tel_ddd="81" fk_id_cli="8"/>
     <!-- ========================= SERVICOS DESTE CLIENTE ======================= -->
     <!-- Servico(5) -->
     <TB_SERVICO serv_id="5" serv_status="CANCELADO" serv_data_inicio="2019-09-03" serv_data_fim="2019-09-04" serv_data_prev_fim="2019-12-25" 
@@ -120,7 +120,7 @@
     <!-- ============================================================================ -->
     <!-- ========================= EQUIPAMENTOS DESTE CLIENTE ======================= -->
     <!-- Equipamento(8) -->
-    <TB_EQUIPAMENTO equip_descricao="Notebook novo ainda na garantia" equip_marca="asus" equip_modelo="vivobook X510ua-BR1160T" equip_serie="X510uaDF60T" 
+    <TB_EQUIPAMENTO equip_id="8" equip_descricao="Notebook novo ainda na garantia" equip_marca="asus" equip_modelo="vivobook X510ua-BR1160T" equip_serie="X510uaDF60T" 
         equip_defeito="Cooler fazendo muito barulho" 
         equip_solucao="Manutenção cancelada, o cooler estava mau conectado por ter sido violado, e a loja vendora ter trocado peças do hardware por peças menos valiosa e inferiores as defábrica do aparelho"
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="5" fk_func="4"/>
