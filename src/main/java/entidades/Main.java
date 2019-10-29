@@ -23,7 +23,7 @@ public class Main {
         c1.addTelefones(t1);
         c1.addTelefones(t2);
 
-        ServicoE serv = preencherServico(Status.ABERTO, getData(5, 9, 2019), null, getData(19, 12, 2019));
+        Servico serv = preencherServico(Status.ABERTO, getData(5, 9, 2019), null, getData(19, 12, 2019));
 
         serv.setCliente(c1);
         serv.setFuncionario(func);
@@ -114,8 +114,8 @@ public class Main {
         return eq;
     }
 
-    private static ServicoE preencherServico(Status status, Date inicio, Date fim, Date prevFim) {
-        ServicoE s = new ServicoE();
+    private static Servico preencherServico(Status status, Date inicio, Date fim, Date prevFim) {
+        Servico s = new Servico();
         s.setStatus(status);
         s.setInicio(inicio);
         s.setFim(fim);

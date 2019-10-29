@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 
 @TransactionManagement(CONTAINER)
 @TransactionAttribute(REQUIRED)
-public abstract class Servico<T extends Entidade> {
+public abstract class ServicoS<T extends Entidade> {
 
     @PersistenceContext(name = "ordemservico", type = TRANSACTION)
     protected EntityManager entityManager;

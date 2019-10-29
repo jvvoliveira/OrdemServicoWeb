@@ -15,7 +15,7 @@ import javax.validation.executable.ValidateOnExecution;
 @Stateless(name = "ejb/TelefoneServico")
 @LocalBean
 @ValidateOnExecution(type = ExecutableType.ALL)
-public class TelefoneServico extends Servico<Telefone>{
+public class TelefoneServico extends ServicoS<Telefone>{
 
     @Override
     public Telefone criar() {

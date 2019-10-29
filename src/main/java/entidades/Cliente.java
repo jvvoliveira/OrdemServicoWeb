@@ -63,7 +63,7 @@ public class Cliente extends Pessoa {
     private Endereco endereco;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "cliente")
-    private List<ServicoE> servicos;
+    private List<Servico> servicos;
 
     public Cliente() {
         this.telefones = new ArrayList();
@@ -102,12 +102,12 @@ public class Cliente extends Pessoa {
         }
     }
 
-    public List<ServicoE> getServicos() {
+    public List<Servico> getServicos() {
         return servicos;
     }
 
-    public ServicoE getServico(long id) {
-        for (ServicoE serv : servicos) {
+    public Servico getServico(long id) {
+        for (Servico serv : servicos) {
             if (serv.getId() == id) {
                 return serv;
             }
@@ -115,11 +115,11 @@ public class Cliente extends Pessoa {
         return null;
     }
 
-    public void addServicos(ServicoE servico) {
+    public void addServicos(Servico servico) {
         this.servicos.add(servico);
     }
 
-    public void setServicos(List<ServicoE> servicos) {
+    public void setServicos(List<Servico> servicos) {
         this.servicos = servicos;
     }
 }

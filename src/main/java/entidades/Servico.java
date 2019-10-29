@@ -31,26 +31,26 @@ import utils.Status;
 @NamedQueries(
         {
             @NamedQuery(
-                    name = ServicoE.SERVICOE_POR_CLIENTE_CPF,
-                    query = "SELECT s FROM ServicoE s, Cliente c WHERE c.cpf LIKE ?1"
+                    name = Servico.SERVICO_POR_CLIENTE_CPF,
+                    query = "SELECT s FROM Servico s, Cliente c WHERE c.cpf LIKE ?1"
             )
             ,
             @NamedQuery(
-                    name = ServicoE.SERVICOE_POR_FUNCIONARIO_MATRICULA,
-                    query = "SELECT s FROM ServicoE s, Funcionario f WHERE f.matricula LIKE ?1"
+                    name = Servico.SERVICO_POR_FUNCIONARIO_MATRICULA,
+                    query = "SELECT s FROM Servico s, Funcionario f WHERE f.matricula LIKE ?1"
             )
             ,
             @NamedQuery(
-                    name = ServicoE.SERVICOE_POR_STATUS,
-                    query = "SELECT s FROM ServicoE s where s.status LIKE ?1"
+                    name = Servico.SERVICO_POR_STATUS,
+                    query = "SELECT s FROM Servico s where s.status LIKE ?1"
             )
         }
 )
-public class ServicoE extends Entidade {
+public class Servico extends Entidade {
 
-    public static final String SERVICOE_POR_CLIENTE_CPF = "ServicoEPorClienteCPF";
-    public static final String SERVICOE_POR_FUNCIONARIO_MATRICULA = "ServicoEPorFuncionarioMatricula";
-    public static final String SERVICOE_POR_STATUS = "ServicoEPorStatus";
+    public static final String SERVICO_POR_CLIENTE_CPF = "ServicoPorClienteCPF";
+    public static final String SERVICO_POR_FUNCIONARIO_MATRICULA = "ServicoPorFuncionarioMatricula";
+    public static final String SERVICO_POR_STATUS = "ServicoPorStatus";
 
     @NotNull(message = "Status do serviço não pode ser nulo")
     @Enumerated(EnumType.STRING)
@@ -94,7 +94,7 @@ public class ServicoE extends Entidade {
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Equipamento> equipamentos;
 
-    public ServicoE() {
+    public Servico() {
         this.equipamentos = new ArrayList();
     }
 
@@ -116,7 +116,7 @@ public class ServicoE extends Entidade {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ServicoE other = (ServicoE) obj;
+        final Servico other = (Servico) obj;
         if (this.id != other.id) {
             return false;
         }
