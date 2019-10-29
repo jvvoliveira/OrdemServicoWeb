@@ -24,11 +24,31 @@ import validadores.ValidaCPF_CNPJ;
                     name = Cliente.CLIENTE_POR_CPF,
                     query = "SELECT c FROM Cliente c WHERE c.cpf = ?1"
             )
+            ,
+            @NamedQuery(
+                    name = Cliente.CLIENTE_POR_NOME,
+                    query = "SELECT c FROM Cliente c WHERE c.nome LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = Cliente.CLIENTE_POR_TELEFONE,
+                    query = "SELECT c FROM Cliente c WHERE EXISTS "
+                    + "(SELECT t FROM Telefone t WHERE t.cliente = c AND t.numero = ?1)"
+            )
+            ,
+            @NamedQuery(
+                    name = Cliente.CLIENTE_POR_BAIRRO,
+                    query = "SELECT c FROM Cliente c WHERE EXISTS "
+                    + "(SELECT e FROM Endereco e WHERE e.bairro LIKE ?1)"
+            )
         }
 )
 public class Cliente extends Pessoa {
 
-    public static final String CLIENTE_POR_CPF = "CompradorPorCPF";
+    public static final String CLIENTE_POR_CPF = "ClientePorCPF";
+    public static final String CLIENTE_POR_NOME = "ClientePorNome";
+    public static final String CLIENTE_POR_TELEFONE = "ClientePorTelefone";
+    public static final String CLIENTE_POR_BAIRRO = "ClientePorBairro";
 
     @ValidaCPF_CNPJ
     @Size(min = 11, max = 18, message = "CPF com quantidade incorreta de caracteres")
@@ -43,7 +63,7 @@ public class Cliente extends Pessoa {
     private Endereco endereco;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "cliente")
-    private List<Servico> servicos;
+    private List<ServicoE> servicos;
 
     public Cliente() {
         this.telefones = new ArrayList();
@@ -82,12 +102,12 @@ public class Cliente extends Pessoa {
         }
     }
 
-    public List<Servico> getServicos() {
+    public List<ServicoE> getServicos() {
         return servicos;
     }
 
-    public Servico getServico(long id) {
-        for (Servico serv : servicos) {
+    public ServicoE getServico(long id) {
+        for (ServicoE serv : servicos) {
             if (serv.getId() == id) {
                 return serv;
             }
@@ -95,11 +115,11 @@ public class Cliente extends Pessoa {
         return null;
     }
 
-    public void addServicos(Servico servico) {
+    public void addServicos(ServicoE servico) {
         this.servicos.add(servico);
     }
 
-    public void setServicos(List<Servico> servicos) {
+    public void setServicos(List<ServicoE> servicos) {
         this.servicos = servicos;
     }
 }

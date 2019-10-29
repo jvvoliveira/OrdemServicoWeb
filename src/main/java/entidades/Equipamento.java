@@ -59,7 +59,7 @@ public class Equipamento extends Entidade {
     @NotNull(message = "Equipamento deve estar associado a um serviço")
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "FK_SERV", referencedColumnName = "ID")
-    private Servico servico;
+    private ServicoE servico;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "FK_FUNC", referencedColumnName = "ID")
@@ -167,11 +167,11 @@ public class Equipamento extends Entidade {
         this.valorTotal = this.getCustoPecas() + this.getMaoObra();
     }
 
-    public Servico getServico() {
+    public ServicoE getServico() {
         return servico;
     }
 
-    public void setServico(Servico servico) {
+    public void setServico(ServicoE servico) {
         this.servico = servico;
     }
 

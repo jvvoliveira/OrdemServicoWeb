@@ -1,7 +1,7 @@
 package servico;
 
 import entidades.Cliente;
-import entidades.Entidade;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -40,9 +40,19 @@ public class ClienteServico extends Servico<Cliente> {
     public Cliente consultarPorCPF(@CPF String cpf) {
         return super.consultarEntidade(new Object[] {cpf}, Cliente.CLIENTE_POR_CPF);
     }    
+    
+    @TransactionAttribute(SUPPORTS)
+    public List<Cliente> consultarPorNome(@NotNull String nome){
+        return super.consultarEntidades(new Object[] {nome}, Cliente.CLIENTE_POR_NOME);
+    }
+    
+    @TransactionAttribute(SUPPORTS)
+    public List<Cliente> consultarPorTelefone(@NotNull String numeroTelefone){
+        return super.consultarEntidades(new Object[] {numeroTelefone}, Cliente.CLIENTE_POR_TELEFONE);
+    }
+    
+    @TransactionAttribute(SUPPORTS)
+    public List<Cliente> consultarPorBairro(@NotNull String bairro){
+        return super.consultarEntidades(new Object[] {bairro}, Cliente.CLIENTE_POR_BAIRRO);
+    }
 }
-//transaction atribute = 
-// required - default, em geral para modificar dados do banco
-//supports - consulta em banco, somente leituras
-//
-

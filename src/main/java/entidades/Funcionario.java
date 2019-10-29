@@ -26,7 +26,7 @@ public class Funcionario extends Pessoa {
     private String cargo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "funcionario")
-    private List<Servico> servicos;
+    private List<ServicoE> servicos;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "funcionario")
     private List<Equipamento> equipamentos;
@@ -52,15 +52,15 @@ public class Funcionario extends Pessoa {
         this.cargo = cargo;
     }
 
-    public List<Servico> getServicos() {
+    public List<ServicoE> getServicos() {
         return servicos;
     }
 
-    public void setServicos(List<Servico> servicos) {
+    public void setServicos(List<ServicoE> servicos) {
         this.servicos = servicos;
     }
 
-    public void addServicos(Servico servico) {
+    public void addServicos(ServicoE servico) {
         this.servicos.add(servico);
     }
 
