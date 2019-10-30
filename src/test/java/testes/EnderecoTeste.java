@@ -109,7 +109,16 @@ public class EnderecoTeste extends Teste{
     }
     
     
-    
+    @ Test
+    public void atualizarEndereco(){
+        Endereco endereco = enderecoServico.consultarPorId(3L);
+        assertEquals("R. da Santa Cruz", endereco.getRua());
+        endereco.setRua("R. do Sport");
+        enderecoServico.atualizar(endereco);
+        endereco = enderecoServico.consultarPorId(3L);
+        assertEquals("R. do Sport", endereco.getRua());
+
+    }
     
     
     
