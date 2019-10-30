@@ -150,4 +150,14 @@ public class EquipamentoTeste extends Teste{
             throw ex;
         }
     }
+    
+     @Test
+    public void atualizarFuncionario() { 
+        Equipamento equip = equipServico.consultaPorId(5L);
+        assertEquals("ASD8766", equip.getSerie());
+        equip.setSerie("ASD8766A"); 
+        equipServico.atualizar(equip);
+        equip = equipServico.consultaPorId(5L);
+        assertEquals("ASD8766A", equip.getSerie());
+    }
 }
