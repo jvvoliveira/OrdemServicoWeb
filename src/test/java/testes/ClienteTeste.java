@@ -150,12 +150,32 @@ public class ClienteTeste extends Teste {
     }
 
     @Test
-    public void atualizarCliente() { 
+    public void atualizarCliente() {
         Cliente cliente = clienteServico.consultarPorId(6L);
         assertEquals("Arlindo Cavalcanti Filho", cliente.getNome());
-        cliente.setNome("Ronaldo"); 
+        cliente.setNome("Ronaldo");
         clienteServico.atualizar(cliente);
         cliente = clienteServico.consultarPorId(6L);
         assertEquals("Ronaldo", cliente.getNome());
+    }
+
+    @Test(expected = EJBException.class)
+    public void atualizarClienteComCPFIncorreto() {
+        try {
+            Cliente cliente = clienteServico.consultarPorId(8L);
+            assertEquals("Bruna Amancio Vilanova", cliente.getNome());
+            cliente.setCpf("235.769.680-08234234234");
+            clienteServico.atualizar(cliente);
+        } catch (EJBException ex) {
+            assertTrue(ex.getCause() instanceof ConstraintViolationException);
+            ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
+            for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
+                assertThat(erroValidacao.getMessage(),
+                        CoreMatchers.anyOf(
+                            startsWith("CPF com quantidade incorreta de caracteres"),
+                            startsWith("Erro de validação do CPF(xxx.xxx.xxx-xx) / CNPJ (xx.xxx.xxx/xxxx-xx)")));
+            }
+            throw ex;
+        }
     }
 }

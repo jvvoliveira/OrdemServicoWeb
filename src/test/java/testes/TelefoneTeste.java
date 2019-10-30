@@ -151,4 +151,16 @@ public class TelefoneTeste extends Teste {
             throw ex;
         }
     }
+    
+    @Test
+    public void atualizarTelefone() {
+        Telefone telefone = telefoneServico.consultarPorNumero("34648400");
+        assertEquals("81", telefone.getDdd());
+        telefone.setDdd("22");
+
+        telefoneServico.atualizar(telefone);
+
+        telefone = telefoneServico.consultarPorNumero("34648400");
+        assertEquals("22", telefone.getDdd());
+    }
 }

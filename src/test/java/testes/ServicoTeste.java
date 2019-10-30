@@ -129,4 +129,36 @@ public class ServicoTeste extends Teste {
             throw ex;
         }
     }
+
+    @Test
+    public void atualizarServico() {
+        Servico servico = servicoServico.consultarPorId(1L);
+        assertEquals(Status.FINALIZADO, servico.getStatus());
+        servico.setStatus(Status.ABERTO);
+
+        servicoServico.atualizar(servico);
+
+        servico = servicoServico.consultarPorId(1L);
+        assertEquals(Status.ABERTO, servico.getStatus());
+    }
+
+    @Test(expected = EJBException.class)
+    public void atualizarServicoComDataInicioNula() {
+        try {
+            Servico servico = servicoServico.consultarPorId(2L);
+            servico.setInicio(null);
+
+            servicoServico.atualizar(servico);
+        } catch (EJBException ex) {
+            assertTrue(ex.getCause() instanceof ConstraintViolationException);
+            ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
+            for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
+                assertThat(erroValidacao.getMessage(),
+                        CoreMatchers.anyOf(
+                                startsWith("Data de início do serviço não pode ser nulo")));
+            }
+            throw ex;
+        }
+
+    }
 }
