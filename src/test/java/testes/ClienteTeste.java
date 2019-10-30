@@ -149,13 +149,13 @@ public class ClienteTeste extends Teste {
         }
     }
 
-//    @Test
-//    public void atualizarCliente() { 
-//        Cliente cliente = clienteServico.consultarPorId(6L);
-//        assertEquals("Arlindo Cavalcanti Filho", cliente.getNome());
-//        cliente.setNome("Ronaldo"); 
-//        clienteServico.atualizar(cliente);
-//        cliente = clienteServico.consultarPorId(6L);
-//        assertEquals("Ronaldo", cliente.getNome());
-//    }
+    @Test
+    public void atualizarCliente() { 
+        Cliente cliente = clienteServico.consultarPorId(6L);
+        assertEquals("Arlindo Cavalcanti Filho", cliente.getNome());
+        cliente.setNome("Ronaldo"); 
+        clienteServico.atualizar(cliente);
+        cliente = clienteServico.consultarPorId(6L);
+        assertEquals("Ronaldo", cliente.getNome());
+    }
 }
