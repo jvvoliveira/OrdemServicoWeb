@@ -8,13 +8,31 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import validadores.Valida_Matricula;
 
 @Entity
 @DiscriminatorValue(value = "F")
+@NamedQueries(
+        {
+            @NamedQuery(
+                name = Funcionario.FUNCIONARIO_POR_MATRICULA,
+                query = "SELECT f FROM Funcionario f WHERE f.matricula = ?1"
+            )
+                ,
+            @NamedQuery(
+                    name = Cliente.CLIENTE_POR_NOME,
+                    query = "SELECT f FROM Funcionario f WHERE f.nome LIKE ?1"
+            )
+        }
+)
 public class Funcionario extends Pessoa {
+    
+     public static final String FUNCIONARIO_POR_MATRICULA = "FuncionarioPorMatricula";
+     public static final String FUNCIONARIO_POR_NOME = "FuncionarioPorNome";
     
     @Valida_Matricula(message = "Matrícula inválida")
     @Size(min = 9, max = 9, message = "Matrícula com quantidade incorreta de caracteres")
