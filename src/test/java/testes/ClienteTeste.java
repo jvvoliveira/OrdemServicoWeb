@@ -105,28 +105,50 @@ public class ClienteTeste extends Teste {
     }
 
     @Test(expected = EJBException.class)
-    public void persistirClienteCPFInvalido() {
+    public void persistirClienteCPF_EmailInvalido() {
         try {
             Cliente cliente = clienteServico.criar();
             cliente.setCpf("11wdwwr3434");
             cliente.setNome("João Victor");
-            cliente.setEmail("joao@email.com");
+            cliente.setEmail("joaojoao");
             cliente.setDataNasc(new Date(99, 5, 31));
             clienteServico.persistir(cliente);
         } catch (EJBException ex) {
             assertTrue(ex.getCause() instanceof ConstraintViolationException);
-            
+
             ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
             for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
                 assertThat(erroValidacao.getMessage(),
                         CoreMatchers.anyOf(
-                            startsWith("Erro de validação do CPF(xxx.xxx.xxx-xx) / CNPJ (xx.xxx.xxx/xxxx-xx)")
+                                startsWith("Erro de validação do CPF(xxx.xxx.xxx-xx) / CNPJ (xx.xxx.xxx/xxxx-xx)"),
+                                startsWith("Email inválido")
                         ));
             }
             throw ex;
         }
     }
-    
+
+    @Test(expected = EJBException.class)
+    public void persistirClienteCamposVazios() {
+        try {
+            Cliente cliente = clienteServico.criar();
+            clienteServico.persistir(cliente);
+        } catch (EJBException ex) {
+            assertTrue(ex.getCause() instanceof ConstraintViolationException);
+
+            ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
+            for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
+                assertThat(erroValidacao.getMessage(),
+                        CoreMatchers.anyOf(
+                                startsWith("Nome não pode ser nulo"),
+                                startsWith("Email não pode ser nulo"),
+                                startsWith("Data de Nascimento não pode ser nulo")
+                        ));
+            }
+            throw ex;
+        }
+    }
+
 //    @Test
 //    public void atualizarCliente() { 
 //        Cliente cliente = clienteServico.consultarPorId(6L);
