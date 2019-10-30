@@ -39,7 +39,7 @@ import validadores.ValidaCPF_CNPJ;
             @NamedQuery(
                     name = Cliente.CLIENTE_POR_BAIRRO,
                     query = "SELECT c FROM Cliente c WHERE EXISTS "
-                    + "(SELECT e FROM Endereco e WHERE e.bairro LIKE ?1)"
+                    + "(SELECT e FROM Endereco e WHERE c.endereco = e AND e.bairro LIKE ?1)"
             )
         }
 )

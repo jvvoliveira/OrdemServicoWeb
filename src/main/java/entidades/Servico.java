@@ -32,17 +32,21 @@ import utils.Status;
         {
             @NamedQuery(
                     name = Servico.SERVICO_POR_CLIENTE_CPF,
-                    query = "SELECT s FROM Servico s, Cliente c WHERE c.cpf LIKE ?1"
+                    query = "SELECT s FROM Servico s, Cliente c WHERE s.cliente = c AND c.cpf LIKE ?1"
             )
             ,
             @NamedQuery(
                     name = Servico.SERVICO_POR_FUNCIONARIO_MATRICULA,
-                    query = "SELECT s FROM Servico s, Funcionario f WHERE f.matricula LIKE ?1"
+                    query = "SELECT s FROM Servico s, Funcionario f WHERE s.funcionario = f AND f.matricula LIKE ?1"
             )
             ,
             @NamedQuery(
                     name = Servico.SERVICO_POR_STATUS,
-                    query = "SELECT s FROM Servico s where s.status LIKE ?1"
+                    query = "SELECT s FROM Servico s where s.status = ?1"
+            ),
+            @NamedQuery(
+                    name = Servico.SERVICO_POR_ID,
+                    query = "SELECT s FROM Servico s where s.id = ?1"
             )
         }
 )
@@ -51,6 +55,7 @@ public class Servico extends Entidade {
     public static final String SERVICO_POR_CLIENTE_CPF = "ServicoPorClienteCPF";
     public static final String SERVICO_POR_FUNCIONARIO_MATRICULA = "ServicoPorFuncionarioMatricula";
     public static final String SERVICO_POR_STATUS = "ServicoPorStatus";
+    public static final String SERVICO_POR_ID = "ServicoPorId";
 
     @NotNull(message = "Status do serviço não pode ser nulo")
     @Enumerated(EnumType.STRING)
@@ -96,31 +101,6 @@ public class Servico extends Entidade {
 
     public Servico() {
         this.equipamentos = new ArrayList();
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + (int) (this.id ^ (this.id >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Servico other = (Servico) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
     }
 
     public Status getStatus() {
