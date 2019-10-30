@@ -24,7 +24,7 @@ import validadores.Valida_Matricula;
             )
                 ,
             @NamedQuery(
-                    name = Cliente.CLIENTE_POR_NOME,
+                    name = Funcionario.FUNCIONARIO_POR_NOME,
                     query = "SELECT f FROM Funcionario f WHERE f.nome LIKE ?1"
             )
         }
