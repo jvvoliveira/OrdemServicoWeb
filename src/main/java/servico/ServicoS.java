@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import org.eclipse.persistence.jpa.JpaCache;
 
 @TransactionManagement(CONTAINER)
 @TransactionAttribute(REQUIRED)
@@ -50,6 +51,15 @@ public abstract class ServicoS<T extends Entidade> {
         }
         
         return entidade;
+    }
+    
+    public void remover(@Valid T entidade) {
+        if (existe(entidade)) {
+            if (!entityManager.contains(entidade)) {
+                entidade = entityManager.merge(entidade);
+            }
+            entityManager.remove(entidade);
+        }
     }
 
     @TransactionAttribute(SUPPORTS)

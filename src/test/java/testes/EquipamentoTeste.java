@@ -14,10 +14,7 @@ import javax.validation.ConstraintViolationException;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import org.junit.After;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import servico.EquipamentoServico;
@@ -152,12 +149,21 @@ public class EquipamentoTeste extends Teste{
     }
     
      @Test
-    public void atualizarFuncionario() { 
-        Equipamento equip = equipServico.consultaPorId(5L);
-        assertEquals("ASD8766", equip.getSerie());
-        equip.setSerie("ASD8766A"); 
+    public void atualizarFuncionario() {
+        Equipamento equip = equipServico.consultaPorId(2L);
+        assertEquals("AFGB86JH83JDS7", equip.getSerie());
+        equip.setSerie("AFGB86JH83JDS8"); 
         equipServico.atualizar(equip);
-        equip = equipServico.consultaPorId(5L);
-        assertEquals("ASD8766A", equip.getSerie());
+        equip = equipServico.consultaPorId(2L);
+        assertEquals("AFGB86JH83JDS8", equip.getSerie());
+    }
+    
+    @Test
+    public void removerEquipamento(){
+        Equipamento equip = equipServico.consultaPorId(3L);
+        assertNotNull(equip);
+        equipServico.remover(equip);
+        equip = equipServico.consultaPorId(3L);
+        assertNull(equip);
     }
 }

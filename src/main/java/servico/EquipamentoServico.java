@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.SUPPORTS;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableType;
@@ -39,7 +40,12 @@ public class EquipamentoServico extends ServicoS<Equipamento>{
     
     @TransactionAttribute(SUPPORTS)
     public Equipamento consultaPorId(@NotNull Long id){
-        return super.consultarEntidade(new Object[] {id}, Equipamento.EQUIPAMENTO_POR_ID);
+        try {
+            return super.consultarEntidade(new Object[] {id}, Equipamento.EQUIPAMENTO_POR_ID);
+        } catch (NoResultException ex) {
+            //Não encontrou nada, retorna null
+            return null;
+        }
     }
     
     @TransactionAttribute(SUPPORTS)
