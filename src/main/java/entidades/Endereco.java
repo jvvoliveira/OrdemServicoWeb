@@ -23,7 +23,11 @@ import javax.validation.constraints.Size;
                     name = Endereco.ENDERECO_POR_CPF,
                     query = "SELECT e FROM Endereco e WHERE e.cliente.cpf = ?1"
             )              
-
+                ,
+            @NamedQuery(
+                    name = Endereco.ENDERECO_POR_CLIENTE_COM_MAIS_DE_UM_SERVICO,   
+                    query = "SELECT c.endereco FROM Cliente c WHERE SIZE(c.servicos) > 1"
+            ) 
         }
 )
 
@@ -31,6 +35,7 @@ import javax.validation.constraints.Size;
 public class Endereco extends Entidade {
     
     public static final String ENDERECO_POR_CPF = "ClienteCPF";
+    public static final String ENDERECO_POR_CLIENTE_COM_MAIS_DE_UM_SERVICO = "EnderecoPorClienteComMaisDeUmServico";
     
     
     @NotNull(message = "Cidade não pode ser nulo")

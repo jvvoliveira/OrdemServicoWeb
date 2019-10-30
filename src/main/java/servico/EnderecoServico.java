@@ -2,6 +2,7 @@ package servico;
 
 import entidades.Cliente;
 import entidades.Endereco;
+import static entidades.Endereco.ENDERECO_POR_CLIENTE_COM_MAIS_DE_UM_SERVICO;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
@@ -41,5 +42,10 @@ public class EnderecoServico extends ServicoS<Endereco> {
     public Endereco consultarPorCPF(@CPF String cpf) {
         return super.consultarEntidade(new Object[] {cpf}, Endereco.ENDERECO_POR_CPF);
     } 
+    
+     @TransactionAttribute(SUPPORTS)
+     public List<Endereco> EnderecoPorClienteComMaisDeUmServico(){
+         return super.consultarEntidades(new Object[0], ENDERECO_POR_CLIENTE_COM_MAIS_DE_UM_SERVICO);
+     }
     
 }
