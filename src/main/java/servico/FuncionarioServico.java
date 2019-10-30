@@ -1,6 +1,7 @@
 package servico;
 
 import entidades.Funcionario;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -40,8 +41,8 @@ public class FuncionarioServico extends ServicoS<Funcionario>{
     }
     
     @TransactionAttribute(SUPPORTS)
-    public Funcionario consultarPorNome(@NotNull String nome) {
-        return super.consultarEntidade(new Object[] {nome}, Funcionario.FUNCIONARIO_POR_NOME);
+    public List<Funcionario> consultarPorNome(@NotNull String nome) {
+        return super.consultarEntidades(new Object[] {nome}, Funcionario.FUNCIONARIO_POR_NOME);
     }
     
 }

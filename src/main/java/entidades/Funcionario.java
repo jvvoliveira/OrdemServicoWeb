@@ -20,7 +20,7 @@ import validadores.Valida_Matricula;
         {
             @NamedQuery(
                 name = Funcionario.FUNCIONARIO_POR_MATRICULA,
-                query = "SELECT f FROM Funcionario f WHERE f.matricula = ?1"
+                query = "SELECT f FROM Funcionario f WHERE f.matricula LIKE ?1"
             )
                 ,
             @NamedQuery(
