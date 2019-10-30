@@ -122,8 +122,8 @@ public class FuncionarioTeste extends Teste {
         Funcionario funcionario = funcServico.consultarPorId(4L);
         assertEquals("Natanael Maior Couto", funcionario.getNome());
         funcionario.setNome("Natanael Menor Couto"); 
-//        funcServico.atualizar(funcionario);
-//        funcionario = funcServico.consultarPorId(4L);
-//        assertEquals("Natanael Menor Couto", funcionario.getNome());
+        funcServico.atualizar(funcionario);
+        funcionario = funcServico.consultarPorId(4L);
+        assertEquals("Natanael Menor Couto", funcionario.getNome());
     }
 }
