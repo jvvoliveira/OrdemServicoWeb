@@ -1,14 +1,12 @@
 package entidades;
 
-import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -16,7 +14,41 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_EQUIPAMENTO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                name = Equipamento.EQUIPAMENTO_POR_ID,
+                query = "Select e From Equipamento e WHERE e.id = ?1"
+            )
+            ,
+            @NamedQuery(
+                name = Equipamento.EQUIPAMENTO_POR_CLIENTE,
+                query = "Select e From Equipamento e WHERE e.servico.cliente.cpf LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                name = Equipamento.EQUIPAMENTO_POR_FUNCIONARIO,
+                query = "Select e From Equipamento e WHERE e.funcionario.matricula LIKE ?1 "
+            )
+            ,
+            @NamedQuery(
+                name = Equipamento.EQUIPAMENTO_POR_MARCA,
+                query = "Select e From Equipamento e WHERE e.marca LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                name = Equipamento.EQUIPAMENTO_POR_SERVICO,
+                query = "Select e From Equipamento e WHERE e.servico.id = ?1"
+            )
+        }
+)
 public class Equipamento extends Entidade {
+    
+    public static final String EQUIPAMENTO_POR_ID = "EquipamentoPorId";
+    public static final String EQUIPAMENTO_POR_FUNCIONARIO = "EquipamentoPorFuncionario";
+    public static final String EQUIPAMENTO_POR_MARCA = "EquipamentoPorMarca";
+    public static final String EQUIPAMENTO_POR_SERVICO = "EquipamentoPorServico";
+    public static final String EQUIPAMENTO_POR_CLIENTE = "EquipamentoPorCliente";
     
     @NotNull(message = "Descrição do equipamento não pode ser nulo")
     @Size(max = 300, message = "Caracteres a mais na descrição do equipamento")
