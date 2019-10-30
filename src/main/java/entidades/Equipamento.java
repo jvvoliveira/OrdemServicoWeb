@@ -100,13 +100,6 @@ public class Equipamento extends Entidade {
     public Equipamento(){
         
     }
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + (int) (this.id ^ (this.id >>> 32));
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {

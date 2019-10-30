@@ -103,7 +103,6 @@ public class Main {
         Equipamento eq = new Equipamento();
         eq.setDefeito(defeito);
         eq.setMarca(marca);
-        eq.setSerie(serie);
         eq.setModelo(modelo);
         eq.setDescricao(descricao);
         eq.setSolucao(solucao);

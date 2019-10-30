@@ -14,10 +14,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FuncionarioTeste extends Teste {
     
@@ -33,29 +30,29 @@ public class FuncionarioTeste extends Teste {
         funcServico = null;
     }
     
-//    @Test
-//    public void existeFuncionario() {
-//        Funcionario func = funcServico.criar();
-//        func.setMatricula("201608SO6");
-//        assertTrue(funcServico.existe(func));
-//    }
+    @Test
+    public void existeFuncionario() {
+        Funcionario func = funcServico.criar();
+        func.setMatricula("201705OS2");
+        assertTrue(funcServico.existe(func));
+    }
     
-//    @Test
-//    public void getFuncioanrioPorMatricula() {
-//        Funcionario func = funcServico.consultarPorMatricula("201808OS3");
-//        assertNotNull(func);
-//        assertEquals("Natalia Shonda Feltrao Silva", func.getNome());
-//    }
+    @Test
+    public void getFuncioanrioPorMatricula() {
+        Funcionario func = funcServico.consultarPorMatricula("201808OS3");
+        assertNotNull(func);
+        assertEquals("Natalia Shonda Feltrao Silva", func.getNome());
+    }
 
-//    @Test(expected = EJBException.class)
-//    public void consultarFuncionarioMatriculaInvalida() {
-//        try {
-//            funcServico.consultarPorMatricula("123456789");
-//        } catch (EJBException ex) {
-//            assertTrue(ex.getCause() instanceof ConstraintViolationException);
-//            throw ex;
-//        }
-//    }
+    @Test(expected = EJBException.class)
+    public void consultarFuncionarioMatriculaInvalida() {
+        try {
+            funcServico.consultarPorMatricula(null);
+        } catch (EJBException ex) {
+            assertTrue(ex.getCause() instanceof ConstraintViolationException);
+            throw ex;
+        }
+    }
 
     @Test(expected = EJBException.class)
     public void getMatriculaPorMatriculaInexistente() {
@@ -95,36 +92,38 @@ public class FuncionarioTeste extends Teste {
         assertNotNull(funcionario.getId());
     }
 
-//    @Test(expected = EJBException.class)
-//    public void persistirFuncionarioMatriculaInvalida() {
-//        try {
-//            Funcionario funcionario = funcServico.criar();
-//            funcionario.setCargo("técnico");
-//            funcionario.setDataNasc(new Date(25, 6, 1993));
-//            funcionario.setNome("Karen Moureira Rodriguez");
-//            funcionario.setMatricula("ABCDEFGHI");
-//            funcionario.setEmail("karen.rodriguez@mail.com");
-//        } catch (EJBException ex) {
-//            assertTrue(ex.getCause() instanceof ConstraintViolationException);
-//            
-//            ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
-//            for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
-//                assertThat(erroValidacao.getMessage(),
-//                        CoreMatchers.anyOf(
-//                            startsWith("Erro de validação da matrícula(xxxxxxOSx)")
-//                        ));
-//            }
-//            throw ex;
-//        }
-//    }
+    @Test(expected = EJBException.class)
+    public void persistirFuncionarioMatriculaEmailInvalido() {
+        try {
+            Funcionario funcionario = funcServico.criar();
+            funcionario.setCargo("técnico");
+            funcionario.setDataNasc(new Date(25, 6, 1993));
+            funcionario.setNome("Karen Moureira Rodriguez");
+            funcionario.setMatricula(null);
+            funcionario.setEmail("etwerter");
+            funcServico.persistir(funcionario);
+        } catch (EJBException ex) {
+            assertTrue(ex.getCause() instanceof ConstraintViolationException);
+              
+            ConstraintViolationException erro = (ConstraintViolationException) ex.getCause();
+            for (ConstraintViolation erroValidacao : erro.getConstraintViolations()) {
+                assertThat(erroValidacao.getMessage(),
+                        CoreMatchers.anyOf(
+                            startsWith("Email inválido"),
+                            startsWith("Erro de validação da matrícula(xxxxxxOSx)")
+                        ));
+            }
+            throw ex;
+        }
+    }
     
-//    @Test
-//    public void atualizarFuncionario() { 
-//        Funcionario funcionario = funcServico.consultarPorId(4L);
-//        assertEquals("Natanael Maior Couto", funcionario.getNome());
-//        funcionario.setNome("Natanael Menor Couto"); 
+    @Test
+    public void atualizarFuncionario() { 
+        Funcionario funcionario = funcServico.consultarPorId(4L);
+        assertEquals("Natanael Maior Couto", funcionario.getNome());
+        funcionario.setNome("Natanael Menor Couto"); 
 //        funcServico.atualizar(funcionario);
 //        funcionario = funcServico.consultarPorId(4L);
 //        assertEquals("Natanael Menor Couto", funcionario.getNome());
-//    }
+    }
 }

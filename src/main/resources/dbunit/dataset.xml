@@ -94,15 +94,15 @@
         fk_cli="7" fk_func="2"/>
     <!-- *********************** EQUIPAMENTOS DESTE CLIENTE *********************** -->
     <!-- Equipamento(5) -->
-    <TB_EQUIPAMENTO num_versao="1" id="5" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="ASD8766" 
+    <TB_EQUIPAMENTO num_versao="1" id="5" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="HP" equip_modelo="16100" equip_serie="ASD8766" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="3"/>
     <!-- Equipamento(6) -->
-    <TB_EQUIPAMENTO num_versao="1" id="6" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="AKJ987YHj" 
+    <TB_EQUIPAMENTO num_versao="1" id="6" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="HP" equip_modelo="16100" equip_serie="AKJ987YHj" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="3"/>
     <!-- Equipamento(7) -->
-    <TB_EQUIPAMENTO num_versao="1" id="7" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="CorPC " equip_modelo="16100" equip_serie="IJK877KJ" 
+    <TB_EQUIPAMENTO num_versao="1" id="7" equip_descricao="Computador bem gasto, com bastante uso" equip_marca="HP" equip_modelo="16100" equip_serie="IJK877KJ" 
         equip_defeito="Computador lento, para limpeza e atualização de drives e softwares" equip_solucao="" 
         equip_mao_obra="0.0" equip_custo_pecas="0.0" fk_serv="4" fk_func="2"/>
     <!-- ############################################################################### -->

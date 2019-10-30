@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
+import org.hibernate.validator.constraints.br.CPF;
 import validadores.Valida_Matricula;
 
 @Stateless(name = "ejb/EquipamentoServico")
@@ -57,7 +58,7 @@ public class EquipamentoServico extends ServicoS<Equipamento>{
     }
     
     @TransactionAttribute(SUPPORTS)
-    public List<Equipamento> consultaPorClienteCpf(@NotNull String cpf){
+    public List<Equipamento> consultaPorClienteCpf(@NotNull @CPF String cpf){
         return super.consultarEntidades(new Object[] {cpf}, Equipamento.EQUIPAMENTO_POR_CLIENTE);
     }
     

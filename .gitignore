@@ -1,2 +1,4 @@
 # Ignorar arquivos e subpastas da pasta target
 target/
+# Ignorando o pom.xml
+pom.xml
