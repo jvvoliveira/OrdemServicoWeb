@@ -47,6 +47,10 @@ import utils.Status;
             @NamedQuery(
                     name = Servico.SERVICO_POR_ID,
                     query = "SELECT s FROM Servico s where s.id = ?1"
+            ),
+            @NamedQuery(
+                    name = Servico.TODOS_SERVICO,
+                    query = "SELECT s FROM Servico s"
             )
         }
 )
@@ -56,6 +60,7 @@ public class Servico extends Entidade {
     public static final String SERVICO_POR_FUNCIONARIO_MATRICULA = "ServicoPorFuncionarioMatricula";
     public static final String SERVICO_POR_STATUS = "ServicoPorStatus";
     public static final String SERVICO_POR_ID = "ServicoPorId";
+    public static final String TODOS_SERVICO = "TodosServico";
 
     @NotNull(message = "Status do serviço não pode ser nulo")
     @Enumerated(EnumType.STRING)

@@ -12,7 +12,10 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.embedded-static-shell.jar>C:\\glassfish4\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
+        <!--Bia-->
+        <!--<glassfish.embedded-static-shell.jar>/home/beatrizlima/GlassFish_Server/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
+        <!--João-->
+        <glassfish.embedded-static-shell.jar>C:\\Users\\ALUNO\\GlassFish_Server\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
     </properties>
     
     <dependencies>
@@ -46,7 +49,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.17</version>
         </dependency>
-        <!--        <dependency>
+<!--                <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.34</version>
@@ -73,6 +76,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.4.2.Final</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>7.0</version>
         </dependency>
     </dependencies>
 

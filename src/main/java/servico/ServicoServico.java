@@ -51,5 +51,10 @@ public class ServicoServico extends ServicoS<Servico> {
     @TransactionAttribute(SUPPORTS)
     public List<Servico> consultarPorStatus(@NotNull Status status) {
         return super.consultarEntidades(new Object[] {status}, Servico.SERVICO_POR_STATUS);
-    } 
+    }
+    
+    @TransactionAttribute(SUPPORTS)
+    public List<Servico> consultarTodosServicos(){
+        return super.consultarEntidades(new Object[] {}, Servico.TODOS_SERVICO);
+    }
 }
