@@ -16,7 +16,7 @@
                 PF('statusDialog').hide();
             }
         </script>
-        
+
         <h:form id="Servicos">            
             <p:separator />
             <p:dataTable var="servico"  value="#{servicoBean.servicos}" rows="10" paginator="true"  caseSensitiveSort="true"
@@ -26,24 +26,37 @@
                     <h:outputText value="#{servico.status}" />
                 </p:column>
             </p:dataTable>
-                <h:panelGrid columns="4" cellpadding="5">
-                    <h:outputLabel for="status" value="Status:" style="font-weight:bold" />
-                    <p:inputText id="status" value="#{servicoBean.entidade.status}" />
-                    
-                   <p:outputLabel for="prevFim" value="prevFim: " />
-                   <p:datePicker id="prevFim" value="#{servicoBean.entidade.prevFim}" />
-                    
-                    
-                    <p:outputLabel for="inicio" value="inicio" />
-                    <p:datePicker id="inicio" value="#{servicoBean.entidade.inicio}" />
-                    
-                    
-                    <p:outputLabel for="fim" value="fim" />
-                    <p:datePicker id="fim" value="#{servicoBean.entidade.fim}" />
-                    
-                    <p:commandButton value="Submit" action="#{servicoBean.salvar(servicoBean.entidade)}" update="display" icon="pi pi-check" />
-                    <h:outputText id="display" value="xao" />
-                </h:panelGrid>
+            <h:panelGrid columns="6" cellpadding="6">
+
+                <h:outputLabel for="cpfCliente" value="Cliente:" style="font-weight:bold" />
+                <p:inputText id="cpfCliente" value="#{servicoBean.cpfCliente}" placeholder="CPF" required="true">
+                </p:inputText>
+                <p:message for="cpfCliente"/>
+                
+                <h:outputLabel for="status" value="Status:" style="font-weight:bold" />
+                <p:selectOneMenu id="status" value="#{servicoBean.entidade.status}" required="true">
+                    <f:selectItem itemLabel="Status" itemValue="" />
+                    <f:selectItem itemLabel="ABERTO" itemValue="ABERTO" />
+                    <f:selectItem itemLabel="ANDAMENTO" itemValue="ANDAMENTO" />
+                    <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
+                    <f:selectItem itemLabel="ENTREGUE" itemValue="ENTREGUE" />
+                    <f:selectItem itemLabel="CANCELADO" itemValue="CANCELADO" />
+                </p:selectOneMenu>
+                <!--<p:inputText id="status"  required="true"/>-->
+
+                <p:outputLabel for="prevFim" value="prevFim: " />
+                <p:datePicker id="prevFim" value="#{servicoBean.entidade.prevFim}" required="true"/>
+
+
+                <p:outputLabel for="inicio" value="inicio" />
+                <p:datePicker id="inicio" value="#{servicoBean.entidade.inicio}" required="true"/>
+
+
+                <p:outputLabel for="fim" value="fim" />
+                <p:datePicker id="fim" value="#{servicoBean.entidade.fim}" required="true"/>
+
+                <p:commandButton value="Submit" action="#{servicoBean.salvar()}" ajax="true" icon="pi pi-check" />
+            </h:panelGrid>
 
         </h:form>
     </h:body>

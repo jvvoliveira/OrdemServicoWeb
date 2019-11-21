@@ -20,32 +20,32 @@ import utils.Status;
 
 public class ServicoTeste extends Teste {
 
-    private ServicoServico servicoServico;
+//    private ServicoServico servicoServico;
+//
+//    @Before
+//    public void setUp() throws NamingException {
+//        servicoServico = (ServicoServico) container.getContext().lookup("java:global/classes/ejb/ServicoServico!servico.ServicoServico");
+//    }
+//
+//    @After
+//    public void tearDown() {
+//        servicoServico = null;
+//    }
+//
+//    @Test
+//    public void existeServico() {
+//        Servico servico = servicoServico.criar();
+//        servico.setId(2L);
+//        assertTrue(servicoServico.existe(servico));
+//    }
 
-    @Before
-    public void setUp() throws NamingException {
-        servicoServico = (ServicoServico) container.getContext().lookup("java:global/classes/ejb/ServicoServico!servico.ServicoServico");
-    }
-
-    @After
-    public void tearDown() {
-        servicoServico = null;
-    }
-
-    @Test
-    public void existeServico() {
-        Servico servico = servicoServico.criar();
-        servico.setId(2L);
-        assertTrue(servicoServico.existe(servico));
-    }
-
-    @Test
-    public void getServicoPorClienteCPF() {
-        List<Servico> servicos = servicoServico.consultarPorClienteCPF("025.696.830-60");
-        assertEquals(2, servicos.size());
-        assertEquals(Status.ENTREGUE, servicos.get(0).getStatus());
-        assertEquals(Status.ABERTO, servicos.get(1).getStatus());
-    }
+//    @Test
+//    public void getServicoPorClienteCPF() {
+//        List<Servico> servicos = servicoServico.consultarPorClienteCPF("025.696.830-60");
+//        assertEquals(2, servicos.size());
+//        assertEquals(Status.ENTREGUE, servicos.get(0).getStatus());
+//        assertEquals(Status.ABERTO, servicos.get(1).getStatus());
+//    }
 //
 //    @Test(expected = EJBException.class)
 //    public void getServicoPorClienteCPFInvalido() {

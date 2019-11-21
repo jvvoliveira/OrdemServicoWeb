@@ -18,24 +18,24 @@ import servico.ClienteServico;
 
 public class ClienteTeste extends Teste {
 
-//    private ClienteServico clienteServico;
-//
-//    @Before
-//    public void setUp() throws NamingException {
-//        clienteServico = (ClienteServico) container.getContext().lookup("java:global/classes/ejb/ClienteServico!servico.ClienteServico");
-//    }
-//
-//    @After
-//    public void tearDown() {
-//        clienteServico = null;
-//    }
-//
-//    @Test
-//    public void existeCliente() {
-//        Cliente cliente = clienteServico.criar();
-//        cliente.setCpf("297.121.520-22");
-//        assertTrue(clienteServico.existe(cliente));
-//    }
+    private ClienteServico clienteServico;
+
+    @Before
+    public void setUp() throws NamingException {
+        clienteServico = (ClienteServico) container.getContext().lookup("java:global/classes/ejb/ClienteServico!servico.ClienteServico");
+    }
+
+    @After
+    public void tearDown() {
+        clienteServico = null;
+    }
+
+    @Test
+    public void existeCliente() {
+        Cliente cliente = clienteServico.criar();
+        cliente.setCpf("297.121.520-22");
+        assertTrue(clienteServico.existe(cliente));
+    }
 //
 //    @Test
 //    public void getClientePorCPF() {
