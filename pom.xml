@@ -15,7 +15,9 @@
         <!--Bia-->
         <!--<glassfish.embedded-static-shell.jar>/home/beatrizlima/GlassFish_Server/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
         <!--João-->
-        <glassfish.embedded-static-shell.jar>C:\\Users\\ALUNO\\GlassFish_Server\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
+        <!--<glassfish.embedded-static-shell.jar>C:\\Users\\ALUNO\\GlassFish_Server\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
+        <!--Gida-->
+        <glassfish.embedded-static-shell.jar>/home/gideonejr/glassfish4/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
     </properties>
     
     <dependencies>

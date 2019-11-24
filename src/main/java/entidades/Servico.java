@@ -92,12 +92,14 @@ public class Servico extends Entidade {
     private double valorTotal; //mão de obra + custo de peças
 
     @NotNull(message = "Serviço deve estar associado a um cliente")
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_CLI", referencedColumnName = "ID")
     private Cliente cliente;
 
     @NotNull(message = "Serviço deve estar associado a um funcionário atendente")
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_FUNC", referencedColumnName = "ID")
     private Funcionario funcionario;
 
