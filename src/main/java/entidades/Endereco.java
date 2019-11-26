@@ -70,13 +70,6 @@ public class Endereco extends Entidade {
     private Cliente cliente;
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + (int) (this.id ^ (this.id >>> 32));
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Livros</title>
+        <title>Servicos</title>
     </h:head>
     <h:body>
         <script type="text/javascript">
@@ -23,8 +23,23 @@
             <p:dataTable id="dataTable" var="servico"  value="#{servicoBean.servicos}" rows="10" paginator="true"  caseSensitiveSort="true"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15" emptyMessage="Não existem servicos cadastrados">
-                <p:column headerText="Título" sortBy="#{servico.status}">
+                <p:column headerText="Status" sortBy="#{servico.status}">
                     <h:outputText value="#{servico.status}" />
+                </p:column>
+                <p:column headerText="Data Abertura" sortBy="#{servico.inicio}">
+                    <h:outputText value="#{servico.inicio}" />
+                </p:column>
+                <p:column headerText="Prev Fim" sortBy="#{servico.prevFim}">
+                    <h:outputText value="#{servico.prevFim}" />
+                </p:column>
+                <p:column headerText="Fim" sortBy="#{servico.fim}">
+                    <h:outputText value="#{servico.fim}" />
+                </p:column>
+                <p:column headerText="Cliente" sortBy="#{servico.cliente.nome}">
+                    <h:outputText value="#{servico.cliente.nome}" />
+                </p:column>
+                <p:column headerText="Equipamento Qtd" sortBy="#{servico.equipamentos.size()}">
+                    <h:outputText value="#{servico.equipamentos.size()}" />
                 </p:column>
             </p:dataTable>
             <h:panelGrid columns="6" cellpadding="6">

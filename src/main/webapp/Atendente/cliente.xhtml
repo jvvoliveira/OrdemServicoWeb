@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastrar Cliente</title>
+        <style type="text/css">
+            .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+                text-align: center;
+            }
+
+            .customPanelGrid .ui-panelgrid-content {
+                align-items: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="Servicos"> 
+            <p:panelGrid columns="4" layout="grid" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4">
+
+                <h3>Dados do Cliente</h3>
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                
+                <p:outputLabel for="nome" value="Nome/Razão Social" />
+                <p:inputText id="nome" value="#{clienteBean.entidade.nome}" placeholder="Fulano da Silva"/>
+
+                <p:outputLabel for="cpf" value="CPF:" />
+                <p:inputMask id="cpf" value="#{clienteBean.entidade.cpf}" mask="999.999.999-99" placeholder="123.456.789-00"/>
+
+                <p:outputLabel for="dataNasc" value="Date de Nascimento:" />
+                <p:datePicker id="dataNasc" value="#{clienteBean.entidade.dataNasc}" showIcon="true" style="width:auto" />
+
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{clienteBean.entidade.email}"/>
+
+                <h3>Endereço</h3>
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+
+                <p:outputLabel for="rua" value="Rua:" />
+                <p:inputText id="rua" value="#{clienteBean.endereco.rua}" placeholder="Av. Rua dos Bobos"/>
+
+                <p:outputLabel for="numero" value="Número:" />
+                <p:inputText id="numero" value="#{clienteBean.endereco.numero}" placeholder="91 A"/>
+
+                <p:outputLabel for="cidade" value="Cidade:" />
+                <p:inputText id="cidade" value="#{clienteBean.endereco.cidade}" placeholder="Cidade"/>
+
+                <p:outputLabel for="bairro" value="Bairro:" />
+                <p:inputText id="bairro" value="#{clienteBean.endereco.bairro}" placeholder="Bairro"/>
+
+                <p:outputLabel for="complemento" value="Complemento:" />
+                <p:inputText id="complemento" value="#{clienteBean.endereco.complemento}" placeholder="Complemento"/>
+
+                <p:outputLabel for="cep" value="CEP" />
+                <p:inputMask id="cep" value="#{clienteBean.endereco.cep}" placeholder="12345-678" mask="99999-999"/>
+                
+                <h3>Contato</h3>
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                
+                <p:outputLabel for="ddd" value="DDD:" />
+                <p:inputText id="ddd" value="#{clienteBean.telefone.ddd}" placeholder="DDD"/>
+
+                <p:outputLabel for="num" value="Número:" />
+                <p:inputText id="num" value="#{clienteBean.telefone.numero}" placeholder="Numero"/>
+            
+                <p:commandButton value="Submit" action="#{clienteBean.salvar()}" ajax="true" icon="pi pi-check"/>
+            </p:panelGrid>
+        </h:form>
+        <h:form id="form">
+    <p:growl id="msgs" showDetail="true"/>
+ 
+    <p:dataTable id="Telefones" widgetVar="Telefones" var="tel" value="#{clienteBean.telefones}" editable="true" style="margin-bottom:20px">
+        <f:facet name="header">
+            Row Editing with add functionality
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{clienteBean.onRowEdit()}" update=":form:msgs" />
+        <p:ajax event="rowEditCancel" listener="#{clienteBean.onRowCancel()}" update=":form:msgs" />
+ 
+        <p:column headerText="ddd">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{tel.ddd}" /></f:facet>
+                <f:facet name="input"><p:inputText id="modelInput" value="#{tel.ddd}" style="width:100%"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="numero">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{tel.numero}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{tel.numero}" style="width:100%" label="numero"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column style="width:32px">
+            <p:rowEditor />
+        </p:column>
+    </p:dataTable>
+ 
+     <div class="ui-g">
+         <div class="ui-g-12">
+             <p:commandButton value="Add new row" styleClass="ui-priority-primary" process="@this" update=":form:msgs"
+                              action="#{clienteBean.onAddNew()}" oncomplete="PF('Telefones').addRow();"/>
+         </div>
+     </div>
+ 
+ </h:form>
+    </h:body>
+</html>

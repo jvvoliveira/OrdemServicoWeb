@@ -7,6 +7,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.FlowEvent;
+import static org.primefaces.shaded.commons.io.IOUtils.skip;
 import servico.ClienteServico;
 import servico.FuncionarioServico;
 import servico.ServicoServico;
@@ -88,5 +90,13 @@ public class ServicoBean extends Bean<Servico> implements Serializable {
         this.funcionarioServico = funcionarioServico;
     }
     
-    
+    public String onFlowProcess(FlowEvent event) {
+        if(skip){
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
+    }
 }
